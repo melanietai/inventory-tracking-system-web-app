@@ -1,4 +1,4 @@
-from flask import (render_template, request, redirect)
+from flask import (render_template, request, redirect, flash)
 from myapp.crud import inventory_crud
 
 
@@ -18,7 +18,7 @@ def create_inventory():
     return render_template("create.html")
 
 
-def view_inventory(id):
+def show_inventory(id):
     """Return an inventory item to edit page"""
 
     inventory = inventory_crud.get_inventory_by_id(id)
@@ -27,11 +27,23 @@ def view_inventory(id):
     
     
 def edit_inventory(id):
-    """Edit inventory in database and redirect to homepage."""
+    """Edit an inventory item in database and redirect to homepage."""
 
     name = request.form.get("name")
     qty = request.form.get("qty")
 
     inventory_crud.update_inventory(id=id, name=name, qty=qty)
+    flash("Item successfuly edited!")
 
-    return redirect ("/")
+    return redirect("/")
+
+
+def delete_inventory(id):
+    """Delete an inventory item in database and flash message."""
+
+    inventory_crud.delete_inventory_by_id(id)
+    flash("Item succesfully deleted!")
+
+    return redirect("/")
+
+

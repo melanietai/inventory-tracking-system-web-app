@@ -36,6 +36,15 @@ def update_inventory(id, name, qty):
     db.session.commit()
 
 
+def delete_inventory_by_id(id):
+    """Delete an inventory."""
+
+    inventory = get_inventory_by_id(id)
+
+    db.session.delete(inventory)
+    db.session.commit()
+
+
 if __name__ == "__main__":
     from myapp import app
 
