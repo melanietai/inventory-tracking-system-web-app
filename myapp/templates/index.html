@@ -7,7 +7,7 @@
 
 
 <span>View a list of your current inventory items</span>
-  <a href="/create">
+  <a href="/inventory/new">
     <button>Create a new item</button>
   </a>
   
@@ -18,9 +18,9 @@
   <li>
     Product: {{ item.name }}
     Quantity: {{ item.qty }}
-    <a href="/edit">
-      <button>Edit</button>
-    </a>
+    <form action="/inventory/{{ item.id }}">
+      <button type="submit">Edit</button>
+    </form>
   </li>
   {% endfor %}
 </ul>

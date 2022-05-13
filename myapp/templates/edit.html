@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}{% endblock %}
+{% block title %}Edit Inventory{% endblock %}
 
 {% block body %}
+<p>Update the product name or quantity.</p>
+
+<div>
+  <form action="/inventory/{{ inventory.id }}" method="POST">
+    <input type="text" name="name" value="{{ inventory.name }}"/>
+    <input type="number" name="qty" value="{{ inventory.qty }}"/>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
 
 {% endblock %}
