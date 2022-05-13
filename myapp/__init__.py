@@ -1,5 +1,6 @@
 from flask import Flask
 import jinja2
+from myapp.views import inventory as inventory_views
 
 app = Flask(__name__)
 
@@ -13,4 +14,4 @@ app.jinja_env.undefined = jinja2.StrictUndefined
 # more useful (you should remove this line in production though)
 app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
 
-
+app.add_url_rule('/', view_func=inventory_views.index)

@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from models import db, connect_to_db, Inventory
+from myapp.models import db, connect_to_db, Inventory
 
 
 def create_inventory(name, qty):
