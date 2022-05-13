@@ -2,10 +2,10 @@
 
 import os
 import models
-import run
+from myapp import app
 
 os.system("dropdb inventoryboss")
 os.system("createdb inventoryboss")
 
-models.connect_to_db(run.app)
+models.connect_to_db(app)
 models.db.create_all()

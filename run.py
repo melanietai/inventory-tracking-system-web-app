@@ -1,5 +1,5 @@
-from app.models import connect_to_db
-from app import app
+from myapp.models import connect_to_db
+from myapp import app
 
 
 if __name__=="__main__":

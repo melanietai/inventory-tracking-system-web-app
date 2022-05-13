@@ -4,6 +4,6 @@ from models import db, connect_to_db, Inventory
 
 
 if __name__ == "__main__":
-    from run import app
+    from myapp import app
 
     connect_to_db(app)
