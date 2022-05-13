@@ -4,8 +4,8 @@ import os
 import models
 from myapp import app
 
-os.system("dropdb inventoryboss")
-os.system("createdb inventoryboss")
+os.system("dropdb inventory")
+os.system("createdb inventory")
 
 models.connect_to_db(app)
 models.db.create_all()
