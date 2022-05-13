@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Inventories{% endblock %}
+{% block title %}Inventory{% endblock %}
 
 {% block body %}
-<h1>Inventories</h1>
-<p>Welcome to your inventory tracking system.</p>
-
+<h1>Welcome to your inventory tracking system</h1>
 
 <span>View a list of your current inventory items</span>
   <a href="/inventory/new">
@@ -13,16 +11,31 @@
   
 
 
-<ul>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Item Name</th>
+    <th>Item Quantity</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
   {% for item in all_inventory %}
-  <li>
-    Product: {{ item.name }}
-    Quantity: {{ item.qty }}
-    <form action="/inventory/{{ item.id }}">
-      <button type="submit">Edit</button>
-    </form>
-  </li>
+  <tr>
+    <td>{{ item.id }}</td>
+    <td>{{ item.name }}</td>
+    <td>{{ item.qty }}</td>
+    <td>
+      <form action="/inventory/{{ item.id }}">
+        <button type="submit">Edit</button>
+      </form>
+    </td>
+    <td>
+      <form action="/inventory/{{ item.id }}">
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
   {% endfor %}
-</ul>
+</table>
 
 {% endblock %}
