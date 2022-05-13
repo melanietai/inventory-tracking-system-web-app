@@ -6,9 +6,11 @@
 
 <div>
   <form action="/inventory/{{ inventory.id }}" method="POST">
+    <label for="new-name">Product name:</label>
     <input type="text" name="name" value="{{ inventory.name }}"/>
+    <label for="new-qty">Quantity:</label>
     <input type="number" name="qty" value="{{ inventory.qty }}"/>
-    <button type="submit">Submit</button>
+    <button type="submit">Update</button>
   </form>
 </div>
 
