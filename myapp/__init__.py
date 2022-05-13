@@ -15,3 +15,5 @@ app.jinja_env.undefined = jinja2.StrictUndefined
 app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
 
 app.add_url_rule('/', view_func=inventory_views.index)
+app.add_url_rule('/create', view_func=inventory_views.create_inventory)
+app.add_url_rule('/edit', view_func=inventory_views.edit_inventory)

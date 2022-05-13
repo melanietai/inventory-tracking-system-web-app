@@ -3,11 +3,11 @@ from myapp.crud import inventory_crud
 
 
 def index():
-    """Return all inventory items to overview page."""
+    """Return all inventory items to homepage."""
 
     all_inventory = inventory_crud.get_all_inventory()
 
-    return render_template("overview.html", all_inventory=all_inventory)
+    return render_template("index.html", all_inventory=all_inventory)
 
 
 def create_inventory():
