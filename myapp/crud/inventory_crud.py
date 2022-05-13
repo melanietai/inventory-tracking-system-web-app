@@ -14,14 +14,14 @@ def create_inventory(name, qty):
     return inventory
 
 
-def get_inventories():
-    """Return all inventories."""
+def get_all_inventory():
+    """Return all inventory items."""
 
     return Inventory.query.all()
 
 
 def get_inventory_by_id(id):
-    """Return an inventory by primary key."""
+    """Return an inventory item by primary key."""
 
     return Inventory.query.get(id)
 
