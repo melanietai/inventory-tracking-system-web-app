@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Inventories{% endblock %}
+
+{% block body %}
+<h1>Inventories</h1>
+<p>Welcome to your inventory tracking system.</p>
+
+
+<span>View a list of your current inventory items</span>
+  <a href="/inventory/create">
+    <button>Create a new item</button>
+  </a>
+  
+
+
+<ul>
+  {% for item in all_inventory %}
+  <li>
+    Product: {{ item.name }}
+    Quantity: {{ item.qty }}
+    <a href="/inventory/edit">
+      <button>Edit</button>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
