@@ -18,7 +18,7 @@ class Inventory(db.Model):
 
 
 
-def connect_to_db(flask_app, db_uri="postgresql:///inventoryboss", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///inventory", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
