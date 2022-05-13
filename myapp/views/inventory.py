@@ -10,15 +10,27 @@ def index():
     return render_template("index.html", all_inventory=all_inventory)
 
 
-def create_inventory():
+def show_create_inventory_page():
     """Return create page to create a new inventory item."""
-
-
 
     return render_template("create.html")
 
 
-def show_inventory(id):
+def create_inventory():
+    """Create a new inventory."""
+
+    name = request.form.get('name')
+    qty = request.form.get('qty')
+
+    inventory_crud.create_inventory(name=name, qty=qty)
+
+    flash("New item successfully added!")
+
+    return redirect("/")
+
+
+
+def show_edit_inventory_page(id):
     """Return an inventory item to edit page"""
 
     inventory = inventory_crud.get_inventory_by_id(id)

@@ -2,5 +2,14 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-
+<p>Create a new item in your inventory list.</p>
+<div>
+  <form action="/inventory/new" method="POST">
+    <label for="new-name">Product name:</label>
+    <input type="text" id="new-name" name="name"/>
+    <label for="new-qty">Quantity:</label>
+    <input type="number" id="new-qty" name="qty"/>
+    <button type="submit">Submit</button>
+  </form>
+</div>
 {% endblock %}

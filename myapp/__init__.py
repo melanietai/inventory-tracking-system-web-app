@@ -17,7 +17,8 @@ app.jinja_env.undefined = jinja2.StrictUndefined
 app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
 
 app.add_url_rule('/', view_func=inventory_views.index)
-app.add_url_rule('/inventory/new', view_func=inventory_views.create_inventory)
-app.add_url_rule('/inventory/<id>', view_func=inventory_views.show_inventory)
+app.add_url_rule('/inventory/new', view_func=inventory_views.show_create_inventory_page)
+app.add_url_rule('/inventory/new', view_func=inventory_views.create_inventory, methods=['POST'])
+app.add_url_rule('/inventory/<id>', view_func=inventory_views.show_edit_inventory_page)
 app.add_url_rule('/inventory/<id>', view_func=inventory_views.edit_inventory, methods=['POST'])
 app.add_url_rule('/inventory/<id>/delete', view_func=inventory_views.delete_inventory, methods=['POST'])
