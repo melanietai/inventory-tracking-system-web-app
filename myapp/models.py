@@ -9,7 +9,7 @@ class Inventory(db.Model):
     
     __tablename__="inventories"
 
-    id = db.Column(db.Integer, auto_increment=True, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String, nullable=False)
     qty = db.Column(db.Integer, nullable=False)
 
