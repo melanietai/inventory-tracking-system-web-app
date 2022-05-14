@@ -1,7 +1,7 @@
 from myapp import app
 import unittest
 from myapp.models import connect_to_db, db, Inventory
-from myapp.crud.inventory_crud import create_inventory, get_all_inventory
+from myapp.crud.inventory_crud import create_inventory, get_all_inventory, get_inventory_by_id, update_inventory, delete_inventory_by_id
 import os
 
 
@@ -37,10 +37,9 @@ class InventoryCrudTestCase(unittest.TestCase):
         self.assertEqual(500, inventory.qty)
 
 
-
     def test_get_all_inventory(self):
 
-        # Create sample data
+        # Add sample data
         shampoo = Inventory(name="Shampoo", qty=500)
         napkins = Inventory(name="Napkins", qty=100)
         db.session.add_all([shampoo, napkins])
@@ -49,13 +48,43 @@ class InventoryCrudTestCase(unittest.TestCase):
         self.assertEqual(list(get_all_inventory()), [shampoo, napkins])
 
     
-    # def test_get_inventory_by_id(self):
+    def test_get_inventory_by_id(self):
 
-    #     self.id = 
+        # Add sample data
+        shampoo = Inventory(name="Shampoo", qty=500)
+        db.session.add(shampoo)
+        db.session.commit()
+
+        self.assertEqual(get_inventory_by_id(shampoo.id), shampoo)
 
 
+    def test_update_inventory(self):
+
+        # Add sample data 
+        shampoo = Inventory(name="Shampoo", qty=500)
+        db.session.add(shampoo)
+        db.session.commit()
+
+        # Sample data for update
+        new_name = "Dove Shampoo"
+        new_qty = 400
+
+        update_inventory(id=shampoo.id, name=new_name, qty=new_qty)
+
+        self.assertEqual(get_inventory_by_id(shampoo.id).name, "Dove Shampoo")
+        self.assertEqual(get_inventory_by_id(shampoo.id).qty, 400)
 
 
+    def test_delete_inventory_by_id(self):
+
+        # Add sample data
+        shampoo = Inventory(name="Shampoo", qty=500)
+        db.session.add(shampoo)
+        db.session.commit()
+
+        delete_inventory_by_id(shampoo.id)
+
+        self.assertEqual(get_inventory_by_id(shampoo.id), None)
 
 
 
