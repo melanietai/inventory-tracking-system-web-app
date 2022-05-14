@@ -33,7 +33,7 @@ def create_inventory():
 def show_edit_inventory_page(id):
     """Return an inventory item to edit page"""
 
-    inventory = inventory_crud.get_inventory_by_id(id)
+    inventory = inventory_crud.get_inventory_by_id(id=id)
 
     return render_template("edit.html", inventory=inventory)
     
@@ -53,7 +53,7 @@ def edit_inventory(id):
 def delete_inventory(id):
     """Delete an inventory item in database and flash message."""
 
-    inventory_crud.delete_inventory_by_id(id)
+    inventory_crud.delete_inventory_by_id(id=id)
     flash("Item succesfully deleted!")
 
     return redirect("/")
