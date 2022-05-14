@@ -36,7 +36,6 @@ class InventoryCrudTestCase(unittest.TestCase):
         self.assertEqual("shampoo", inventory.name)
         self.assertEqual(500, inventory.qty)
 
-
     def test_get_all_inventory(self):
 
         # Add sample data
@@ -47,7 +46,6 @@ class InventoryCrudTestCase(unittest.TestCase):
 
         self.assertEqual(list(get_all_inventory()), [shampoo, napkins])
 
-    
     def test_get_inventory_by_id(self):
 
         # Add sample data
@@ -56,7 +54,6 @@ class InventoryCrudTestCase(unittest.TestCase):
         db.session.commit()
 
         self.assertEqual(get_inventory_by_id(shampoo.id), shampoo)
-
 
     def test_update_inventory(self):
 
@@ -71,9 +68,8 @@ class InventoryCrudTestCase(unittest.TestCase):
 
         update_inventory(id=shampoo.id, name=new_name, qty=new_qty)
 
-        self.assertEqual(get_inventory_by_id(shampoo.id).name, "Dove Shampoo")
-        self.assertEqual(get_inventory_by_id(shampoo.id).qty, 400)
-
+        self.assertEqual(shampoo.name, "Dove Shampoo")
+        self.assertEqual(shampoo.qty, 400)
 
     def test_delete_inventory_by_id(self):
 
@@ -85,7 +81,6 @@ class InventoryCrudTestCase(unittest.TestCase):
         delete_inventory_by_id(shampoo.id)
 
         self.assertEqual(get_inventory_by_id(shampoo.id), None)
-
 
 
 if __name__ == "__main__":
