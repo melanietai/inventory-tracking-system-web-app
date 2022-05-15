@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}New Inventory{% endblock %}
+
+{% block body %}
+<p>Create a new item in your inventory list.</p>
+<div>
+  <form action="/inventory/new" method="POST">
+    <label for="new-inventory">Product name:</label>
+    <input type="text" id="new-inventory" name="name" required/>
+    <label for="new-inventory-qty">Quantity:</label>
+    <input type="number" id="new-inventory-qty" name="qty" required/>
+    <button type="submit">Add</button>
+  </form>
+</div>
+{% endblock %}
