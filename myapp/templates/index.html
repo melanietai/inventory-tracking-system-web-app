@@ -16,6 +16,7 @@
     <th>ID</th>
     <th>Item Name</th>
     <th>Item Quantity</th>
+    <th>Warehouse</th>
     <th>Edit</th>
     <th>Delete</th>
   </tr>
@@ -24,6 +25,11 @@
     <td>{{ item.id }}</td>
     <td>{{ item.name }}</td>
     <td>{{ item.qty }}</td>
+    {% if item.warehouse_id %}
+      <td>{{ item.warehouse.name }}</td>
+    {% else %}
+      <td>Not yet assisnged</td>
+    {% endif %}
     <td>
       <form action="/inventory/{{ item.id }}">
         <button type="submit">Edit</button>
