@@ -1,4 +1,4 @@
-"""CRUD operations."""
+"""CRUD operations for Inventory."""
 
 from myapp.models import db, connect_to_db, Inventory
 from sqlalchemy import update
@@ -30,7 +30,7 @@ def get_inventory_by_id(id):
 def update_inventory(id, name, qty):
     """Update an inventory."""
 
-    stmt = update(Inventory).where(Inventory.id==id).values(name= name, qty= qty )
+    stmt = update(Inventory).where(Inventory.id==id).values(name= name, qty= qty)
     
     db.session.execute(stmt)
     db.session.commit()
