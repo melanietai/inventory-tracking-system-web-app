@@ -29,7 +29,7 @@ def show_edit_warehouse_page(id):
     return render_template("edit_warehouse.html", warehouse=warehouse)
     
     
-def edit_inventory(id):
+def edit_warehouse(id):
     """Edit a warehouse in database and redirect to homepage."""
 
     name = request.form.get("name")
