@@ -1,8 +1,7 @@
 """Script to create database tables."""
 
 import os
-import models
-from myapp import app
+from myapp import app, models
 
 os.system("dropdb inventory")
 os.system("createdb inventory")
