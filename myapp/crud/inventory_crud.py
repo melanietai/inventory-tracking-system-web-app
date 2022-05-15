@@ -4,10 +4,10 @@ from myapp.models import db, connect_to_db, Inventory
 from sqlalchemy import update
 
 
-def create_inventory(name, qty):
+def create_inventory(name, qty, warehouse_id=None):
     """Create and return an inventory."""
 
-    inventory = Inventory(name=name, qty=qty)
+    inventory = Inventory(name=name, qty=qty, warehouse_id=warehouse_id)
 
     db.session.add(inventory)
     db.session.commit()
