@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}New Warehouse{% endblock %}
+
+{% block body %}
+<p>Create a new warehouse in your warehouse list.</p>
+<div>
+  <form action="/warehouse/new" method="POST">
+    <label for="new-warehouse">Warehouse name:</label>
+    <input type="text" id="new-warehouse" name="name" required/>
+    <button type="submit">Add</button>
+  </form>
+</div>
+{% endblock %}
