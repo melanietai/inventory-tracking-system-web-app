@@ -26,7 +26,7 @@
     {% if item.warehouse_id %}
       <td>{{ item.warehouse.name }}</td>
     {% else %}
-      <td>Not yet assisnged</td>
+      <td>Not yet assigned</td>
     {% endif %}
     <td>
       <form action="/inventory/{{ item.id }}">

@@ -1,5 +1,5 @@
 from flask import (render_template, request, redirect, flash)
-from myapp.crud import inventory_crud
+from myapp.crud import inventory_crud, warehouse_crud
 
 
 def show_new_inventory_page():
@@ -25,8 +25,14 @@ def show_edit_inventory_page(id):
     """Return an inventory item to edit_inventory page"""
 
     inventory = inventory_crud.get_inventory_by_id(id=id)
+    warehouses = warehouse_crud.get_all_warehouses()
 
-    return render_template("edit_inventory.html", inventory=inventory)
+    if inventory.warehouse_id:
+        current_warehouse = inventory.warehouse
+    else:
+        current_warehouse = "Not yet assigned"
+
+    return render_template("edit_inventory.html", inventory=inventory, current_warehouse=current_warehouse, warehouses=warehouses)
     
     
 def edit_inventory(id):
