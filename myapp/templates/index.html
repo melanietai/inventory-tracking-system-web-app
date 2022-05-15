@@ -4,16 +4,15 @@
 {% block body %}
 <h1>Welcome to your inventory tracking system</h1>
 
-<span>View a list of your current inventory items</span>
+<div>
+  <span>View a list of your current inventory items</span>
   <a href="/inventory/new">
-    <button>Create a new item</button>
+    <button>Add a new inventory item</button>
   </a>
-  
-
+</div>
 
 <table border="1">
   <tr>
-    <th>ID</th>
     <th>Item Name</th>
     <th>Item Quantity</th>
     <th>Warehouse</th>
@@ -22,7 +21,6 @@
   </tr>
   {% for item in all_inventory %}
   <tr>
-    <td>{{ item.id }}</td>
     <td>{{ item.name }}</td>
     <td>{{ item.qty }}</td>
     {% if item.warehouse_id %}
@@ -37,6 +35,35 @@
     </td>
     <td>
       <form action="/inventory/{{ item.id }}/delete", method="POST">
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<br></br>
+<div>
+  <span>View a list of all warehouses</span>
+  <a href="/warehouse/new">
+    <button>Add a new warehouse</button>
+  </a>
+</div>
+<table border="1">
+  <tr>
+    <th>Warehouse Name</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  {% for warehouse in warehouses %}
+  <tr>
+    <td>{{ warehouse.name }}</td>
+    <td>
+      <form action="/warehouse/{{ warehouse.id }}">
+        <button type="submit">Edit</button>
+      </form>
+    </td>
+    <td>
+      <form action="/warehouse/{{ warehouse.id }}/delete", method="POST">
         <button type="submit">Delete</button>
       </form>
     </td>
