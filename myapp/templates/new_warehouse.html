@@ -2,7 +2,7 @@
 {% block title %}New Warehouse{% endblock %}
 
 {% block body %}
-<p>Create a new warehouse in your warehouse list.</p>
+<h2>Create a new warehouse in your warehouse list</h2>
 <div>
   <form action="/warehouse/new" method="POST">
     <label for="new-warehouse">Warehouse name:</label>
@@ -10,4 +10,6 @@
     <button type="submit">Add</button>
   </form>
 </div>
+<br></br>
+<a href="/">Return to Homepage</a>
 {% endblock %}

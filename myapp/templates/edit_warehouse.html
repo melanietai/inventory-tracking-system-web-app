@@ -2,8 +2,7 @@
 {% block title %}Edit Warehouse{% endblock %}
 
 {% block body %}
-<p>Update the warehouse name.</p>
-
+<h2>Update the warehouse name</h2>
 <div>
   <form action="/warehouse/{{ warehouse.id }}" method="POST">
     <label for="edit-warehouse">Warehouse name:</label>
@@ -11,4 +10,6 @@
     <button type="submit">Update</button>
   </form>
 </div>
+<br></br>
+<a href="/">Return to Homepage</a>
 {% endblock %}

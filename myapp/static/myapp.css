@@ -1,0 +1,14 @@
+* {
+  padding: 0;
+  text-align: center;
+  font-family: "roboto";
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left {
+  text-align: left;
+}
