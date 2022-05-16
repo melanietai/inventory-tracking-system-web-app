@@ -2,7 +2,6 @@ from myapp import app
 import unittest
 from myapp.models import connect_to_db, db, Inventory
 import os
-from myapp.crud.inventory_crud import get_inventory_by_id
 
 
 class InventoryViewsTestCase(unittest.TestCase):
@@ -29,23 +28,15 @@ class InventoryViewsTestCase(unittest.TestCase):
         db.session.commit()
         db.drop_all()
 
-    def test_index(self):
-        """Test return index.html"""
-
-        result = self.client.get("/")
-        
-        self.assertEqual(result.status_code, 200)
-        self.assertIn(b"<h1>Welcome to your inventory tracking system</h1>", result.data)
-
-    def test_show_create_inventory_page(self):
-        """Test return create.html"""
+    def test_show_new_inventory_page(self):
+        """Test return new_inventory.html"""
 
         result = self.client.get("/inventory/new")
 
         self.assertEqual(result.status_code, 200)
         self.assertIn(b"<p>Create a new item in your inventory list.</p>", result.data)
 
-    def test_create_inventory(self):
+    def test_new_inventory(self):
         """Test redirect to / after creating a new inventory item."""
 
         result = self.client.post("/inventory/new", data={"name": "Shampoo", "qty": 500}, follow_redirects=True)
@@ -53,7 +44,7 @@ class InventoryViewsTestCase(unittest.TestCase):
         self.assertEqual(result.status_code, 200)
 
     def test_show_edit_inventory_page(self):
-        """Test return edit.html"""    
+        """Test return edit_inventory.html"""    
 
         # Add sample data
         shampoo = Inventory(name="shampoo", qty=500)
