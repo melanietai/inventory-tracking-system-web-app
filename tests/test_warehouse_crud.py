@@ -5,7 +5,7 @@ from myapp.crud.warehouse_crud import create_warehouse, get_all_warehouses, get_
 import os
 
 
-class InventoryCrudTestCase(unittest.TestCase):
+class WarehouseCrudTestCase(unittest.TestCase):
     """Tests for Inventory crud functions."""
 
     @classmethod
