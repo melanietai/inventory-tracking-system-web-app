@@ -12,11 +12,25 @@
     <label for="edit-inventory-qty">Quantity:</label>
     <input type="number" id="edit-inventory-qty" name="qty" value="{{ inventory.qty }}" required/>
     <br></br>
-    <label for="edit-warehouse">Warehouse:</label>
-    <input type="text" id="edit-warehouse" name="name" value="{{ current_warehouse }}" required/>
+    <label for="warehouse-select">Warehouse:</label>
+    <select name="warehouse-id" id="warehouse-select">
+      {% for warehouse in warehouses %}
+        <option value="{{ warehouse.id }}" {% if inventory.warehouse and warehouse.id == inventory.warehouse.id %}selected{% endif %}>
+          {{ warehouse.name }}
+          {% if inventory.warehouse and  warehouse.id == inventory.warehouse.id %} 
+            (curent) 
+          {% endif %}
+        </option>
+      {% endfor %}
+      <option value="" {% if not inventory.warehouse %}selected{% endif %}>
+        Unassigned 
+        {% if not inventory.warehouse %} 
+          (current) 
+        {% endif %}
+      </option>
+    </select>
+    <br></br>
     <button type="submit">Update</button>
   </form>
 </div>
-
-
 {% endblock %}

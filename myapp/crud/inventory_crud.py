@@ -27,10 +27,10 @@ def get_inventory_by_id(id):
     return Inventory.query.get(id)
 
 
-def update_inventory(id, name, qty):
+def update_inventory(id, name, qty, warehouse_id=None):
     """Update an inventory."""
 
-    stmt = update(Inventory).where(Inventory.id==id).values(name= name, qty= qty)
+    stmt = update(Inventory).where(Inventory.id==id).values(name= name, qty= qty, warehouse_id=warehouse_id)
     
     db.session.execute(stmt)
     db.session.commit()

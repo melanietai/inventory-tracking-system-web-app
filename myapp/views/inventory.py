@@ -5,7 +5,8 @@ from myapp.crud import inventory_crud, warehouse_crud
 def show_new_inventory_page():
     """Return new_inventory page to create a new inventory item."""
 
-    return render_template("new_inventory.html")
+    warehouses = warehouse_crud.get_all_warehouses()
+    return render_template("new_inventory.html", warehouses=warehouses)
 
 
 def new_inventory():
@@ -13,8 +14,9 @@ def new_inventory():
 
     name = request.form.get('name')
     qty = request.form.get('qty')
-
-    inventory_crud.create_inventory(name=name, qty=qty)
+    warehouse_id = request.form.get("warehouse-id") or None
+    inventory_crud.create_inventory(name=name, qty=qty, warehouse_id=warehouse_id)
+    
 
     flash("New item successfully added!")
 
@@ -26,11 +28,7 @@ def show_edit_inventory_page(id):
 
     inventory = inventory_crud.get_inventory_by_id(id=id)
     warehouses = warehouse_crud.get_all_warehouses()
-
-    if inventory.warehouse_id:
-        current_warehouse = inventory.warehouse
-    else:
-        current_warehouse = "Not yet assigned"
+    current_warehouse = inventory.warehouse
 
     return render_template("edit_inventory.html", inventory=inventory, current_warehouse=current_warehouse, warehouses=warehouses)
     
@@ -40,8 +38,9 @@ def edit_inventory(id):
 
     name = request.form.get("name")
     qty = request.form.get("qty")
+    warehouse_id = request.form.get("warehouse-id") or None
 
-    inventory_crud.update_inventory(id=id, name=name, qty=qty)
+    inventory_crud.update_inventory(id=id, name=name, qty=qty, warehouse_id=warehouse_id)
     flash("Item successfuly edited!")
 
     return redirect("/")

@@ -20,25 +20,25 @@
     <th>Delete</th>
   </tr>
   {% for item in all_inventory %}
-  <tr>
-    <td>{{ item.name }}</td>
-    <td>{{ item.qty }}</td>
-    {% if item.warehouse_id %}
-      <td>{{ item.warehouse.name }}</td>
-    {% else %}
-      <td>Not yet assigned</td>
-    {% endif %}
-    <td>
-      <form action="/inventory/{{ item.id }}">
-        <button type="submit">Edit</button>
-      </form>
-    </td>
-    <td>
-      <form action="/inventory/{{ item.id }}/delete", method="POST">
-        <button type="submit">Delete</button>
-      </form>
-    </td>
-  </tr>
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.qty }}</td>
+      {% if item.warehouse_id %}
+        <td>{{ item.warehouse.name }}</td>
+      {% else %}
+        <td>Unassigned</td>
+      {% endif %}
+      <td>
+        <form action="/inventory/{{ item.id }}">
+          <button type="submit">Edit</button>
+        </form>
+      </td>
+      <td>
+        <form action="/inventory/{{ item.id }}/delete", method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
   {% endfor %}
 </table>
 <br></br>
