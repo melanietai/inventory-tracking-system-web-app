@@ -11,14 +11,14 @@
     <input type="number" id="new-inventory-qty" name="qty" required/>
     <label for="warehouse-select">Warehouse:</label>
     <select name="warehouse-id" id="warehouse-select">
+      <option value="">
+        Unassigned 
+      </option>
       {% for warehouse in warehouses %}
         <option value="{{ warehouse.id }}">
           {{ warehouse.name }}
         </option>
       {% endfor %}
-      <option value="">
-        Unassigned 
-      </option>
     </select>
 
     <button type="submit">Add</button>
