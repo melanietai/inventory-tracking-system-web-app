@@ -4,7 +4,7 @@
 
 An inventory tracking web application for a logistics company. This web app includes basic CRUD functionality, in which users can create inventory items and warehouses, edit them, delete them, and view a list of them. In addition, users can assign inventory to specific warehouses.
 
-This web app is built with Python Flask on the backend with a PostgreSQL database, and HTML5 on the frontend using minimal CSS for styling.
+This web app is built with Python Flask on the backend with a SQLite database, and HTML5 on the frontend using minimal CSS for styling.
 
 ## Link to Replit
 My app is deployed on [Replit](https://replit.com/@MelanieTai/inventory-tracking-system-web-app)
