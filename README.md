@@ -11,7 +11,7 @@ This web app is built with Python Flask on the backend with a PostgreSQL databas
 ### View All Inventory and Warehouses
 
 <p>Users can view a list of all inventory items and warehouses.</p>
-<img src="/myapp/static/images_readme/index.png" alt="index page" width="1200px"/>
+<img src="/myapp/static/images_readme/index.png" alt="index page" width="600px"/>
 
 ### Create Inventory and Warehouse
 
@@ -34,6 +34,7 @@ This web app is built with Python Flask on the backend with a PostgreSQL databas
 ### Assign Inventory to Warehouse
 
 <p>Users can assign inventory to specific warehouses.</p>
+<img src="/myapp/static/images_readme/assign_inventory_to_warehouse.png" alt="edit/assign inventory page" width="600px"/>
 
 ## Technologies
 
