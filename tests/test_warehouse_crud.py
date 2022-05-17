@@ -1,33 +1,10 @@
-from myapp import app
-import unittest
-from myapp.models import connect_to_db, db, Warehouse
+from myapp.models import db, Warehouse
 from myapp.crud.warehouse_crud import create_warehouse, get_all_warehouses, get_warehouse_by_id, update_warehouse, delete_warehouse_by_id
-import os
+from tests.base_test_case import BaseTestCase
 
 
-class WarehouseCrudTestCase(unittest.TestCase):
+class WarehouseCrudTestCase(BaseTestCase):
     """Tests for Inventory crud functions."""
-
-    @classmethod
-    def setUpClass(cls):
-        # Get the Flask test client
-        cls.client = app.test_client()
-        app.config["TESTING"] = True
-
-        # Create test database tables
-        os.system("dropdb testdb")
-        os.system('createdb testdb')
-
-        # Connect to test database
-        connect_to_db(app, "sqlite:///test.db")
-
-    def setUp(self):
-        # Create tables
-        db.create_all()
-
-    def tearDown(self):
-        db.session.commit()
-        db.drop_all()
 
     def test_create_warehouse(self):
         """Test create warehouse view function."""
@@ -78,7 +55,3 @@ class WarehouseCrudTestCase(unittest.TestCase):
         delete_warehouse_by_id(id=central.id)
 
         self.assertEqual(get_warehouse_by_id(id=central.id), None)
-
-
-if __name__ == "__main__":
-    unittest.main()

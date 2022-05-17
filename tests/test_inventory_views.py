@@ -1,32 +1,9 @@
-from myapp import app
-import unittest
-from myapp.models import connect_to_db, db, Inventory
-import os
+from myapp.models import db, Inventory
+from tests.base_test_case import BaseTestCase
 
 
-class InventoryViewsTestCase(unittest.TestCase):
+class InventoryViewsTestCase(BaseTestCase):
     """Tests for Inventory view functions."""
-
-    @classmethod
-    def setUpClass(cls):
-        # Get the Flask test client
-        cls.client = app.test_client()
-        app.config["TESTING"] = True
-
-        # Create test database tables
-        os.system("dropdb testdb")
-        os.system('createdb testdb')
-
-        # Connect to test database
-        connect_to_db(app, "sqlite:///test.db")
-
-    def setUp(self):
-        # Create tables
-        db.create_all()
-
-    def tearDown(self):
-        db.session.commit()
-        db.drop_all()
 
     def test_show_new_inventory_page(self):
         """Test return new_inventory.html"""
@@ -34,7 +11,7 @@ class InventoryViewsTestCase(unittest.TestCase):
         result = self.client.get("/inventory/new")
 
         self.assertEqual(result.status_code, 200)
-        self.assertIn(b"<p>Create a new item in your inventory list.</p>", result.data)
+        self.assertIn(b"<h2>Create a new item in your inventory list</h2>", result.data)
 
     def test_new_inventory(self):
         """Test redirect to / after creating a new inventory item."""
@@ -52,9 +29,8 @@ class InventoryViewsTestCase(unittest.TestCase):
         db.session.commit()
 
         result = self.client.get(f"/inventory/{shampoo.id}")
-
         self.assertEqual(result.status_code, 200)
-        self.assertIn(b"<p>Update the product name or quantity.</p>", result.data)
+        self.assertIn(b"<h2>Update the product name, quantity, or warehouse</h2>", result.data)
 
     def test_edit_inventory(self):
         """Test redirect to / after editing an inventory item."""
@@ -81,7 +57,3 @@ class InventoryViewsTestCase(unittest.TestCase):
         
         self.assertEqual(result.status_code, 200)
         self.assertIn(b"<h1>Welcome to your inventory tracking system</h1>", result.data)
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -1,33 +1,10 @@
-from myapp import app
 import unittest
-from myapp.models import connect_to_db, db, Inventory
+from myapp.models import db, Inventory
 from myapp.crud.inventory_crud import create_inventory, get_all_inventory, get_inventory_by_id, update_inventory, delete_inventory_by_id
-import os
+from tests.base_test_case import BaseTestCase
 
-
-class InventoryCrudTestCase(unittest.TestCase):
+class InventoryCrudTestCase(BaseTestCase):
     """Tests for Inventory crud functions."""
-
-    @classmethod
-    def setUpClass(cls):
-        # Get the Flask test client
-        cls.client = app.test_client()
-        app.config["TESTING"] = True
-
-        # Create test database tables
-        os.system("dropdb testdb")
-        os.system('createdb testdb')
-
-        # Connect to test database
-        connect_to_db(app, "sqlite:///test.db")
-
-    def setUp(self):
-        # Create tables
-        db.create_all()
-
-    def tearDown(self):
-        db.session.commit()
-        db.drop_all()
 
     def test_create_inventory(self):
         """Test create inventory view function."""
@@ -81,7 +58,3 @@ class InventoryCrudTestCase(unittest.TestCase):
         delete_inventory_by_id(id=shampoo.id)
 
         self.assertEqual(get_inventory_by_id(id=shampoo.id), None)
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -1,31 +1,7 @@
-from myapp import app
-import unittest
-from myapp.models import connect_to_db, db
-import os
+from tests.base_test_case import BaseTestCase
 
-class IndexViewsTestCase(unittest.TestCase):
+class IndexViewsTestCase(BaseTestCase):
     """Tests for Index view functions."""
-
-    @classmethod
-    def setUpClass(cls):
-        # Get the Flask test client
-        cls.client = app.test_client()
-        app.config["TESTING"] = True
-
-        # Create test database tables
-        os.system("dropdb testdb")
-        os.system('createdb testdb')
-
-        # Connect to test database
-        connect_to_db(app, "sqlite:///test.db")
-
-    def setUp(self):
-        # Create tables
-        db.create_all()
-
-    def tearDown(self):
-        db.session.commit()
-        db.drop_all()
 
     def test_index(self):
         """Test return index.html"""
