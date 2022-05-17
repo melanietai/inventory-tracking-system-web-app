@@ -9,6 +9,9 @@ This web app is built with Python Flask on the backend with a SQLite database, a
 ## Link to Replit
 My app is deployed on [Replit](https://replit.com/@MelanieTai/inventory-tracking-system-web-app)
 
+## Database
+This web app uses SQLite as database because Replit only supports SQLite. This web app was originally built using PostgreSQL as database but was changed to SQLite to simplify deployment to Replit. If this web app is deployed to Heroku or AWS, I will choose PostgreSQL as database.
+
 ## Features
 
 ### View All Inventory and Warehouses
