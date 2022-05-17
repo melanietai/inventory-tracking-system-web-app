@@ -6,6 +6,9 @@ An inventory tracking web application for a logistics company. This web app incl
 
 This web app is built with Python Flask on the backend with a PostgreSQL database, and HTML5 on the frontend using minimal CSS for styling.
 
+## Link to Replit
+My app is deployed on [Replit](https://replit.com/@MelanieTai/inventory-tracking-system-web-app)
+
 ## Features
 
 ### View All Inventory and Warehouses
