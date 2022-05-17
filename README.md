@@ -50,13 +50,13 @@ This web app is built with Python Flask on the backend with a PostgreSQL databas
 * Python Unittest
 
 ### Database:
-* PostgreSQL
+* SQLite
 
 ## How To Get Started
 
 To download and use this web app please follow these instructions:
 
-  1. Install [PostgreSQL](https://www.postgresql.org/download/) 
+  1. Install [Python3](https://www.python.org/downloads/) 
   1. In your terminal, `git clone` this repository
   2. `cd shopify`
   3. Create virtual environment with `virtualenv env`
@@ -68,7 +68,7 @@ To download and use this web app please follow these instructions:
 
 ## Testing
 
-This web app uses Python Unittest for testing. The tests are located in the tests directory. To run the tests, run `python3 -m unittest tests/*`
+This web app uses Python Unittest for testing. The tests are located in the tests directory. To run the tests, run `python3 -m unittest tests/test*`
 
 ## Coming soon...
 
