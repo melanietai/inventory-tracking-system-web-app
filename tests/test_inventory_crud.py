@@ -19,7 +19,7 @@ class InventoryCrudTestCase(unittest.TestCase):
         os.system('createdb testdb')
 
         # Connect to test database
-        connect_to_db(app, "postgresql:///testdb")
+        connect_to_db(app, "sqlite:///test.db")
 
     def setUp(self):
         # Create tables
