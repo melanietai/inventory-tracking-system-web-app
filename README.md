@@ -1,4 +1,4 @@
-# Fall 2022 - Shopify Backend Developer Intern Challenge
+# Inventory Tracking Web App
 
 ## Overview
 
